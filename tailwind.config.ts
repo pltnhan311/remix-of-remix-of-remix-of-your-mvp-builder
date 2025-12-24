@@ -47,6 +47,12 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        christmas: {
+          red: "hsl(var(--christmas-red))",
+          green: "hsl(var(--christmas-green))",
+          gold: "hsl(var(--christmas-gold))",
+          snow: "hsl(var(--christmas-snow))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
