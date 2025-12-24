@@ -9,6 +9,7 @@ import ProductDetail from "./pages/ProductDetail";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import OrderSuccess from "./pages/OrderSuccess";
+import Combos from "./pages/Combos";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/san-pham" element={<Products />} />
           <Route path="/san-pham/:slug" element={<ProductDetail />} />
+          <Route path="/combo" element={<Combos />} />
           <Route path="/gio-hang" element={<Cart />} />
           <Route path="/thanh-toan" element={<Checkout />} />
           <Route path="/dat-hang-thanh-cong/:orderCode" element={<OrderSuccess />} />
