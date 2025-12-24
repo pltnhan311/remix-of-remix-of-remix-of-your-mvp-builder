@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, CheckCircle } from "lucide-react";
 import MainLayout from "@/components/layout/MainLayout";
@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { cartService, orderService } from "@/services";
+import { cartService, orderService, authService } from "@/services";
 import { formatPrice } from "@/lib/format";
 import { CustomerInfo } from "@/types";
 import { z } from "zod";
@@ -47,6 +47,23 @@ const Checkout = () => {
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Auto-fill form with logged-in user data
+  useEffect(() => {
+    const currentUser = authService.getCurrentUser();
+    if (currentUser) {
+      setFormData({
+        fullName: currentUser.fullName || "",
+        phone: currentUser.phone || "",
+        email: currentUser.email || "",
+        address: currentUser.address || "",
+        province: currentUser.province || "",
+        district: currentUser.district || "",
+        ward: currentUser.ward || "",
+        note: "",
+      });
+    }
+  }, []);
 
   // Redirect if cart is empty
   if (items.length === 0) {
@@ -94,7 +111,7 @@ const Checkout = () => {
 
     // Create order
     const orderResult = orderService.createOrder(formData);
-    
+
     if (orderResult.success && orderResult.order) {
       navigate(`/dat-hang-thanh-cong/${orderResult.order.orderCode}`);
     } else {
@@ -121,6 +138,15 @@ const Checkout = () => {
         </nav>
 
         <h1 className="text-3xl font-bold mb-8">Thanh toán</h1>
+
+        {/* Auto-fill notification */}
+        {authService.getCurrentUser() && (
+          <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 mb-6">
+            <p className="text-sm">
+              ✓ Thông tin đã được tự động điền từ tài khoản của bạn. Bạn có thể chỉnh sửa trước khi đặt hàng.
+            </p>
+          </div>
+        )}
 
         <form onSubmit={handleSubmit}>
           <div className="lg:grid lg:grid-cols-3 lg:gap-8">
