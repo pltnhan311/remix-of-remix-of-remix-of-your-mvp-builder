@@ -13,6 +13,7 @@ import Combos from "./pages/Combos";
 import ComboDetail from "./pages/ComboDetail";
 import Auth from "./pages/Auth";
 import MyOrders from "./pages/MyOrders";
+import Contact from "./pages/Contact";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminLayout from "./pages/admin/AdminLayout";
 import Dashboard from "./pages/admin/Dashboard";
@@ -43,6 +44,7 @@ const App = () => (
           <Route path="/dat-hang-thanh-cong/:orderCode" element={<OrderSuccess />} />
           <Route path="/dang-nhap" element={<Auth />} />
           <Route path="/don-hang" element={<MyOrders />} />
+          <Route path="/lien-he" element={<Contact />} />
 
           {/* Admin Routes */}
           <Route path="/admin/dang-nhap" element={<AdminLogin />} />

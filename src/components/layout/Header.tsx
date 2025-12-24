@@ -16,6 +16,7 @@ const Header = () => {
     { href: "/", label: "Trang chủ" },
     { href: "/san-pham", label: "Sản phẩm" },
     { href: "/combo", label: "Combo" },
+    { href: "/lien-he", label: "Liên hệ" },
   ];
 
   return (
