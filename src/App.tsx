@@ -20,6 +20,7 @@ import ProductList from "./pages/admin/ProductList";
 import ProductForm from "./pages/admin/ProductForm";
 import OrderList from "./pages/admin/OrderList";
 import ComboList from "./pages/admin/ComboList";
+import ComboForm from "./pages/admin/ComboForm";
 import BannerList from "./pages/admin/BannerList";
 import NotFound from "./pages/NotFound";
 
@@ -42,7 +43,7 @@ const App = () => (
           <Route path="/dat-hang-thanh-cong/:orderCode" element={<OrderSuccess />} />
           <Route path="/dang-nhap" element={<Auth />} />
           <Route path="/don-hang" element={<MyOrders />} />
-          
+
           {/* Admin Routes */}
           <Route path="/admin/dang-nhap" element={<AdminLogin />} />
           <Route path="/admin" element={<AdminLayout />}>
@@ -51,10 +52,12 @@ const App = () => (
             <Route path="san-pham/:id" element={<ProductForm />} />
             <Route path="san-pham/them" element={<ProductForm />} />
             <Route path="combo" element={<ComboList />} />
+            <Route path="combo/:id" element={<ComboForm />} />
+            <Route path="combo/them" element={<ComboForm />} />
             <Route path="don-hang" element={<OrderList />} />
             <Route path="banner" element={<BannerList />} />
           </Route>
-          
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
