@@ -3,32 +3,21 @@ import { userRepository } from '@/repositories';
 
 const SESSION_KEY = 'noel_session';
 
-// Simple hash function for demo purposes (NOT for production)
-const simpleHash = (str: string): string => {
-  let hash = 0;
-  for (let i = 0; i < str.length; i++) {
-    const char = str.charCodeAt(i);
-    hash = ((hash << 5) - hash) + char;
-    hash = hash & hash;
-  }
-  return hash.toString(36);
-};
-
 class AuthService {
   // Get current session
   getSession(): AuthSession | null {
     try {
       const data = localStorage.getItem(SESSION_KEY);
       if (!data) return null;
-      
+
       const session: AuthSession = JSON.parse(data);
-      
+
       // Check if session expired
       if (new Date(session.expiresAt) < new Date()) {
         this.logout();
         return null;
       }
-      
+
       return session;
     } catch (error) {
       console.error('Error reading session:', error);
@@ -72,8 +61,8 @@ class AuthService {
       return { success: false, error: 'Tài khoản không tồn tại' };
     }
 
-    // Check password
-    if (user.password !== simpleHash(password)) {
+    // Check password (plain text for MVP)
+    if (user.password !== password) {
       return { success: false, error: 'Mật khẩu không chính xác' };
     }
 
@@ -112,7 +101,7 @@ class AuthService {
       email: data.email,
       phone: data.phone,
       fullName: data.fullName,
-      password: simpleHash(data.password),
+      password: data.password, // Plain text for MVP
       role: 'customer',
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
@@ -181,12 +170,12 @@ class AuthService {
       return { success: false, error: 'Chưa đăng nhập' };
     }
 
-    if (currentUser.password !== simpleHash(currentPassword)) {
+    if (currentUser.password !== currentPassword) {
       return { success: false, error: 'Mật khẩu hiện tại không chính xác' };
     }
 
     userRepository.update(currentUser.id, {
-      password: simpleHash(newPassword),
+      password: newPassword, // Plain text for MVP
       updatedAt: new Date().toISOString()
     });
 

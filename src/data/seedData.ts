@@ -558,14 +558,13 @@ export const seedCombos: Combo[] = [
 ];
 
 // ============= Admin User =============
-// Simple hash for demo: "admin123" -> "-1k2j3h4g"
 export const seedUsers: User[] = [
   {
     id: 'admin-1',
     email: 'admin@noelshop.vn',
     phone: '0909123456',
     fullName: 'Quản trị viên',
-    password: '-1k2j3h4g', // Hashed from "admin123"
+    password: '123456', // Plain text for MVP
     role: 'admin',
     createdAt: '2024-01-01T00:00:00Z',
     updatedAt: '2024-01-01T00:00:00Z'

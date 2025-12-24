@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { authService } from "@/services";
+import { initializeData } from "@/data/initData";
 import { z } from "zod";
 
 const loginSchema = z.object({
@@ -50,7 +51,7 @@ const AdminLogin = () => {
     }
 
     const loginResult = authService.login(formData.email, formData.password);
-    
+
     if (loginResult.success) {
       if (loginResult.user?.role !== 'admin') {
         authService.logout();
@@ -58,7 +59,7 @@ const AdminLogin = () => {
         setIsSubmitting(false);
         return;
       }
-      
+
       toast({
         title: "Đăng nhập thành công",
         description: `Chào mừng Admin ${loginResult.user.fullName}!`,
@@ -69,6 +70,16 @@ const AdminLogin = () => {
     }
 
     setIsSubmitting(false);
+  };
+
+  const handleResetData = () => {
+    if (confirm('Bạn có chắc muốn reset lại toàn bộ dữ liệu? Điều này sẽ xóa tất cả dữ liệu hiện tại.')) {
+      initializeData(true); // Force reinitialize
+      toast({
+        title: "Đã reset dữ liệu",
+        description: "Vui lòng đăng nhập lại với mật khẩu: 123456",
+      });
+    }
   };
 
   return (
@@ -137,6 +148,15 @@ const AdminLogin = () => {
           <div className="mt-6 p-4 bg-secondary/50 rounded-lg text-center text-sm text-muted-foreground">
             <p className="font-medium mb-1">Tài khoản demo:</p>
             <p>admin@noelshop.vn / 123456</p>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              className="mt-3 w-full"
+              onClick={handleResetData}
+            >
+              🔄 Reset dữ liệu (nếu lỗi đăng nhập)
+            </Button>
           </div>
         </div>
       </div>
