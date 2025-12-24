@@ -1,20 +1,21 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ShoppingCart, Menu, X, Search, User } from "lucide-react";
+import { ShoppingCart, Menu, X, Search, User, LogOut, Package } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { cartService } from "@/services";
+import { cartService, authService } from "@/services";
 
 const Header = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const cartCount = cartService.getItemCount();
+  const user = authService.getCurrentUser();
+  const isLoggedIn = authService.isAuthenticated();
 
   const navLinks = [
     { href: "/", label: "Trang chủ" },
     { href: "/san-pham", label: "Sản phẩm" },
     { href: "/combo", label: "Combo" },
-    { href: "/lien-he", label: "Liên hệ" },
   ];
 
   return (
@@ -50,14 +51,27 @@ const Header = () => {
                     </Link>
                   ))}
                 </nav>
-                <div className="border-t pt-4 mt-4">
-                  <Link
-                    to="/dang-nhap"
-                    className="flex items-center gap-2 py-2 px-3 rounded-lg hover:bg-secondary"
-                  >
-                    <User className="h-5 w-5" />
-                    Đăng nhập
-                  </Link>
+                <div className="border-t pt-4 mt-4 space-y-1">
+                  {isLoggedIn ? (
+                    <>
+                      <Link to="/don-hang" className="flex items-center gap-2 py-2 px-3 rounded-lg hover:bg-secondary">
+                        <Package className="h-5 w-5" />
+                        Đơn hàng của tôi
+                      </Link>
+                      <button
+                        onClick={() => { authService.logout(); window.location.reload(); }}
+                        className="flex items-center gap-2 py-2 px-3 rounded-lg hover:bg-secondary w-full text-left"
+                      >
+                        <LogOut className="h-5 w-5" />
+                        Đăng xuất
+                      </button>
+                    </>
+                  ) : (
+                    <Link to="/dang-nhap" className="flex items-center gap-2 py-2 px-3 rounded-lg hover:bg-secondary">
+                      <User className="h-5 w-5" />
+                      Đăng nhập
+                    </Link>
+                  )}
                 </div>
               </div>
             </SheetContent>
@@ -121,7 +135,7 @@ const Header = () => {
             </Button>
 
             {/* Account */}
-            <Link to="/dang-nhap">
+            <Link to={isLoggedIn ? "/don-hang" : "/dang-nhap"}>
               <Button variant="ghost" size="icon" className="hidden sm:flex">
                 <User className="h-5 w-5" />
               </Button>

@@ -120,16 +120,20 @@ class OrderRepository extends BaseRepository<Order> {
       .reduce((sum, o) => sum + o.total, 0);
     const pendingOrders = orders.filter(o => o.status === 'pending').length;
     const processingOrders = orders.filter(o => o.status === 'processing').length;
+    const shippedOrders = orders.filter(o => o.status === 'shipped').length;
     const deliveredOrders = orders.filter(o => o.status === 'delivered').length;
     const cancelledOrders = orders.filter(o => o.status === 'cancelled').length;
+    const averageOrderValue = totalOrders > 0 ? totalRevenue / (totalOrders - cancelledOrders) : 0;
 
     return {
       totalOrders,
       totalRevenue,
       pendingOrders,
       processingOrders,
+      shippedOrders,
       deliveredOrders,
-      cancelledOrders
+      cancelledOrders,
+      averageOrderValue: isNaN(averageOrderValue) ? 0 : averageOrderValue
     };
   }
 }
