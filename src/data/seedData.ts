@@ -126,7 +126,7 @@ export const seedProducts: Product[] = [
     description: 'Ngôi sao trang trí đỉnh cây thông, có đèn LED nhấp nháy. Kích thước 20cm.',
     price: 79000,
     images: [
-      'https://images.unsplash.com/photo-1513297887119-d46091b24b39?w=600'
+      'https://images.unsplash.com/photo-1513297887119-d46091b24bfa?q=80&w=600&auto=format&fit=crop'
     ],
     categoryId: 'cat-2',
     variants: [
@@ -168,8 +168,8 @@ export const seedProducts: Product[] = [
     description: 'Dây đèn LED trang trí 100 bóng, dài 10m. Có 8 chế độ nhấp nháy, chống nước IP44.',
     price: 125000,
     images: [
-      'https://images.unsplash.com/photo-1513297887119-d46091b24b39?w=600',
-      'https://images.unsplash.com/photo-1512389142860-9c449e58a814?w=600'
+      'https://plus.unsplash.com/premium_photo-1661396508928-e5efdfb54c39?q=80&w=600&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1612979168796-bcae1575b8c5?q=80&w=600&auto=format&fit=crop'
     ],
     categoryId: 'cat-3',
     variants: [
@@ -189,7 +189,7 @@ export const seedProducts: Product[] = [
     description: 'Rèm đèn LED hình ngôi sao, kích thước 3x1m. Thích hợp trang trí cửa sổ, ban công.',
     price: 289000,
     images: [
-      'https://images.unsplash.com/photo-1512389142860-9c449e58a814?w=600'
+      'https://images.unsplash.com/photo-1513297887119-d46091b24bfa?q=80&w=600&auto=format&fit=crop'
     ],
     categoryId: 'cat-3',
     variants: [
@@ -208,7 +208,7 @@ export const seedProducts: Product[] = [
     description: 'Bộ 3 đèn nến LED điều khiển từ xa, ánh sáng lung linh như nến thật. An toàn cho gia đình có trẻ nhỏ.',
     price: 179000,
     images: [
-      'https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=600'
+      'https://images.unsplash.com/photo-1612979168796-bcae1575b8c5?q=80&w=600&auto=format&fit=crop'
     ],
     categoryId: 'cat-3',
     variants: [
@@ -327,7 +327,7 @@ export const seedProducts: Product[] = [
     description: 'Dây treo cờ tam giác họa tiết Giáng sinh, dài 3m. Trang trí tường, trần nhà.',
     price: 45000,
     images: [
-      'https://images.unsplash.com/photo-1512389142860-9c449e58a814?w=600'
+      'https://plus.unsplash.com/premium_photo-1661396508928-e5efdfb54c39?q=80&w=600&auto=format&fit=crop'
     ],
     categoryId: 'cat-5',
     variants: [
