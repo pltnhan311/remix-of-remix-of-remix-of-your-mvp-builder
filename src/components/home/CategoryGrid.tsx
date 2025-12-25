@@ -39,7 +39,7 @@ const CategoryGrid = () => {
           {categories.map((category, index) => (
             <Link
               key={category.id}
-              to={`/danh-muc/${category.slug}`}
+              to={`/san-pham?category=${category.id}`}
               className="group relative overflow-hidden rounded-xl bg-card shadow-sm hover:shadow-md transition-all duration-300"
               style={{ animationDelay: `${index * 50}ms` }}
             >
@@ -52,7 +52,7 @@ const CategoryGrid = () => {
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent" />
               </div>
-              
+
               {/* Text */}
               <div className="absolute bottom-0 left-0 right-0 p-3 text-center">
                 <h3 className="font-semibold text-background text-sm md:text-base line-clamp-2">

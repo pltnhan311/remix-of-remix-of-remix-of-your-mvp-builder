@@ -192,9 +192,9 @@ const Products = () => {
             {hasActiveFilters && (
               <div className="flex flex-wrap gap-2 mb-6">
                 {searchQuery && (
-                  <span className="inline-flex items-center gap-1 px-3 py-1 bg-secondary rounded-full text-sm">
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-cranberry-soft text-cranberry rounded-full text-sm font-medium">
                     Tìm: "{searchQuery}"
-                    <button onClick={() => setSearchQuery("")}>
+                    <button onClick={() => setSearchQuery("")} className="hover:bg-cranberry/10 rounded-full p-0.5">
                       <X className="h-3 w-3" />
                     </button>
                   </span>
@@ -202,9 +202,9 @@ const Products = () => {
                 {selectedCategories.map(catId => {
                   const cat = categories.find((c: Category) => c.id === catId);
                   return cat ? (
-                    <span key={catId} className="inline-flex items-center gap-1 px-3 py-1 bg-secondary rounded-full text-sm">
+                    <span key={catId} className="inline-flex items-center gap-2 px-3 py-1.5 bg-pine-soft text-pine rounded-full text-sm font-medium">
                       {cat.name}
-                      <button onClick={() => handleCategoryToggle(catId)}>
+                      <button onClick={() => handleCategoryToggle(catId)} className="hover:bg-pine/10 rounded-full p-0.5">
                         <X className="h-3 w-3" />
                       </button>
                     </span>
@@ -233,7 +233,7 @@ const Products = () => {
                     >
                       <ChevronLeft className="h-4 w-4" />
                     </Button>
-                    
+
                     {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
                       <Button
                         key={page}
@@ -245,7 +245,7 @@ const Products = () => {
                         {page}
                       </Button>
                     ))}
-                    
+
                     <Button
                       variant="outline"
                       size="icon"
