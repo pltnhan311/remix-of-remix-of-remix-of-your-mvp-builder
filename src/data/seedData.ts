@@ -20,15 +20,15 @@ export const seedCategories: Category[] = [
   },
   {
     id: 'cat-3',
-    name: 'Đèn LED & Dây Đèn',
+    name: 'Đèn LED & Dây Đèn111',
     slug: 'den-led-day-den',
     description: 'Đèn trang trí, dây đèn LED nhiều màu sắc',
-    image: 'https://images.unsplash.com/photo-1513297887119-d46091b24b39?w=400',
+    image: 'https://plus.unsplash.com/premium_photo-1661396508928-e5efdfb54c39?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     order: 3
   },
   {
     id: 'cat-4',
-    name: 'Ông Già Noel & Người Tuyết',
+    name: 'Ông Già Noel & Người Tuyết22',
     slug: 'ong-gia-noel-nguoi-tuyet',
     description: 'Tượng, búp bê ông già Noel và người tuyết',
     image: 'https://images.unsplash.com/photo-1545048702-79362596cdc9?w=400',
@@ -126,7 +126,7 @@ export const seedProducts: Product[] = [
     description: 'Ngôi sao trang trí đỉnh cây thông, có đèn LED nhấp nháy. Kích thước 20cm.',
     price: 79000,
     images: [
-      'https://images.unsplash.com/photo-1513297887119-d46091b24bfa?q=80&w=600&auto=format&fit=crop'
+      'https://images.unsplash.com/photo-1612979168796-bcae1575b8c5?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
     ],
     categoryId: 'cat-2',
     variants: [
@@ -168,8 +168,7 @@ export const seedProducts: Product[] = [
     description: 'Dây đèn LED trang trí 100 bóng, dài 10m. Có 8 chế độ nhấp nháy, chống nước IP44.',
     price: 125000,
     images: [
-      'https://plus.unsplash.com/premium_photo-1661396508928-e5efdfb54c39?q=80&w=600&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1612979168796-bcae1575b8c5?q=80&w=600&auto=format&fit=crop'
+      'https://images.unsplash.com/photo-1513297887119-d46091b24bfa?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
     ],
     categoryId: 'cat-3',
     variants: [
@@ -189,7 +188,7 @@ export const seedProducts: Product[] = [
     description: 'Rèm đèn LED hình ngôi sao, kích thước 3x1m. Thích hợp trang trí cửa sổ, ban công.',
     price: 289000,
     images: [
-      'https://images.unsplash.com/photo-1513297887119-d46091b24bfa?q=80&w=600&auto=format&fit=crop'
+      'https://plus.unsplash.com/premium_photo-1661396508928-e5efdfb54c39?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
     ],
     categoryId: 'cat-3',
     variants: [
@@ -327,7 +326,7 @@ export const seedProducts: Product[] = [
     description: 'Dây treo cờ tam giác họa tiết Giáng sinh, dài 3m. Trang trí tường, trần nhà.',
     price: 45000,
     images: [
-      'https://plus.unsplash.com/premium_photo-1661396508928-e5efdfb54c39?q=80&w=600&auto=format&fit=crop'
+      'https://plus.unsplash.com/premium_photo-1661396508928-e5efdfb54c39?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
     ],
     categoryId: 'cat-5',
     variants: [
