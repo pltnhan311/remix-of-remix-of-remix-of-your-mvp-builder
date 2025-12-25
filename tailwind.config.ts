@@ -48,10 +48,20 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         christmas: {
-          red: "hsl(var(--christmas-red))",
-          green: "hsl(var(--christmas-green))",
-          gold: "hsl(var(--christmas-gold))",
-          snow: "hsl(var(--christmas-snow))",
+          burgundy: "hsl(var(--christmas-burgundy))",
+          forest: "hsl(var(--christmas-forest))",
+          sage: "hsl(var(--christmas-sage))",
+          champagne: "hsl(var(--christmas-champagne))",
+          cream: "hsl(var(--christmas-cream))",
+          charcoal: "hsl(var(--christmas-charcoal))",
+        },
+        warmGray: {
+          50: "hsl(var(--warm-gray-50))",
+          100: "hsl(var(--warm-gray-100))",
+          200: "hsl(var(--warm-gray-200))",
+          300: "hsl(var(--warm-gray-300))",
+          400: "hsl(var(--warm-gray-400))",
+          500: "hsl(var(--warm-gray-500))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
@@ -71,6 +81,8 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        serif: ['Playfair Display', 'Georgia', 'serif'],
+        handwritten: ['Caveat', 'cursive'],
       },
       keyframes: {
         "accordion-down": {
@@ -93,6 +105,18 @@ export default {
           "0%": { transform: "scale(0.95)", opacity: "0" },
           "100%": { transform: "scale(1)", opacity: "1" },
         },
+        "slide-in-right": {
+          "0%": { transform: "translateX(100%)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "1" },
+        },
+        "slide-in-left": {
+          "0%": { transform: "translateX(-100%)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "1" },
+        },
+        "bounce-soft": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-4px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -100,6 +124,9 @@ export default {
         "fade-in": "fade-in 0.3s ease-out",
         "fade-out": "fade-out 0.3s ease-out",
         "scale-in": "scale-in 0.2s ease-out",
+        "slide-in-right": "slide-in-right 0.3s ease-out",
+        "slide-in-left": "slide-in-left 0.3s ease-out",
+        "bounce-soft": "bounce-soft 2s ease-in-out infinite",
       },
     },
   },

@@ -1,48 +1,76 @@
 import { MainLayout } from "@/components/layout";
-import { 
-  BannerSlider, 
-  CategoryGrid, 
-  FeaturedProducts, 
-  FeaturedCombos 
+import {
+  BannerSlider,
+  CategoryGrid,
+  FeaturedProducts,
+  FeaturedCombos
 } from "@/components/home";
 import FeaturesBanner from "@/components/home/FeaturesBanner";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { ShoppingBag, Sparkles } from "lucide-react";
 
 const Index = () => {
   return (
     <MainLayout>
-      {/* Banner Slider */}
+      {/* Hero Banner Slider */}
       <BannerSlider />
 
       {/* Features Banner */}
       <FeaturesBanner />
 
       {/* Category Grid */}
-      <CategoryGrid />
+      <section className="py-16 bg-warmGray-50">
+        <CategoryGrid />
+      </section>
 
       {/* Featured Products */}
-      <FeaturedProducts />
+      <section className="py-16">
+        <FeaturedProducts />
+      </section>
 
       {/* Featured Combos */}
-      <FeaturedCombos />
+      <section className="py-16 bg-christmas-cream">
+        <FeaturedCombos />
+      </section>
 
-      {/* Newsletter / CTA Section */}
-      <section className="py-16 bg-primary">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-3">
-            🎄 Đừng bỏ lỡ ưu đãi Giáng Sinh!
-          </h2>
-          <p className="text-primary-foreground/80 mb-6 max-w-md mx-auto">
-            Đăng ký nhận thông tin để cập nhật khuyến mãi mới nhất
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="Email của bạn"
-              className="flex-1 px-4 py-3 rounded-lg text-foreground bg-background focus:outline-none focus:ring-2 focus:ring-background/50"
-            />
-            <button className="px-6 py-3 bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-lg transition-colors">
-              Đăng ký
-            </button>
+      {/* Call to Action Section */}
+      <section className="py-20 bg-gradient-to-br from-christmas-burgundy to-christmas-forest relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 text-9xl">🎄</div>
+          <div className="absolute bottom-10 right-10 text-9xl">⭐</div>
+        </div>
+
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <div className="max-w-3xl mx-auto animate-fade-in">
+            <Sparkles className="h-12 w-12 text-christmas-champagne mx-auto mb-4 animate-bounce-soft" />
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+              Trang trí Giáng Sinh ấm áp
+            </h2>
+            <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed">
+              Khám phá bộ sưu tập đồ trang trí Noel độc đáo, mang lại không khí lễ hội đầy ấm cúng cho gia đình bạn
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/san-pham">
+                <Button
+                  size="lg"
+                  className="bg-white text-christmas-burgundy hover:bg-white/90 px-8 py-6 text-lg font-medium shadow-soft-lg hover-lift"
+                >
+                  <ShoppingBag className="mr-2 h-5 w-5" />
+                  Mua sắm ngay
+                </Button>
+              </Link>
+              <Link to="/combo">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-white text-white hover:bg-white hover:text-christmas-burgundy px-8 py-6 text-lg font-medium hover-lift"
+                >
+                  Xem Combo tiết kiệm
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>

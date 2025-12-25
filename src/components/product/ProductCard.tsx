@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ShoppingCart, Eye } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Product } from "@/types";
@@ -39,71 +39,66 @@ const ProductCard = ({ product, onCartUpdate }: ProductCardProps) => {
   return (
     <Link
       to={`/san-pham/${product.slug}`}
-      className="group block bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border"
+      className="group block bg-card rounded-xl overflow-hidden shadow-soft hover-lift transition-smooth border border-warmGray-200"
     >
-      {/* Image */}
-      <div className="relative aspect-square overflow-hidden bg-secondary">
-        <img
-          src={product.images[0]}
-          alt={product.name}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        />
-        
-        {/* Badges */}
-        <div className="absolute top-2 left-2 flex flex-col gap-1">
+      {/* Image Container */}
+      <div className="relative aspect-square overflow-hidden bg-warmGray-100">
+        <div className="image-zoom-container w-full h-full">
+          <img
+            src={product.images[0]}
+            alt={product.name}
+            className="image-zoom w-full h-full object-cover"
+          />
+        </div>
+
+        {/* Badges - Top left */}
+        <div className="absolute top-3 left-3 flex flex-col gap-2">
           {product.featured && (
-            <Badge className="bg-primary text-primary-foreground">
+            <Badge className="bg-christmas-burgundy text-white shadow-soft font-medium">
               Nổi bật
             </Badge>
           )}
           {!isInStock && (
-            <Badge variant="secondary" className="bg-muted text-muted-foreground">
+            <Badge className="bg-warmGray-400 text-white shadow-soft">
               Hết hàng
             </Badge>
           )}
         </div>
 
-        {/* Quick actions */}
-        <div className="absolute bottom-2 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-          <Button
-            size="icon"
-            variant="secondary"
-            className="h-9 w-9 rounded-full shadow-md"
-            onClick={handleAddToCart}
-            disabled={!isInStock}
-          >
-            <ShoppingCart className="h-4 w-4" />
-          </Button>
-          <Button
-            size="icon"
-            variant="secondary"
-            className="h-9 w-9 rounded-full shadow-md"
-          >
-            <Eye className="h-4 w-4" />
-          </Button>
-        </div>
+        {/* Quick Add Button - Slides up from bottom */}
+        {isInStock && (
+          <div className="absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+            <Button
+              className="w-full rounded-none bg-christmas-burgundy hover:bg-christmas-burgundy/90 text-white h-12 font-medium"
+              onClick={handleAddToCart}
+            >
+              <ShoppingCart className="h-4 w-4 mr-2" />
+              Thêm vào giỏ
+            </Button>
+          </div>
+        )}
       </div>
 
       {/* Content */}
       <div className="p-4">
-        <h3 className="font-medium text-card-foreground line-clamp-2 min-h-[2.5rem] group-hover:text-primary transition-colors">
+        <h3 className="font-semibold text-lg text-foreground line-clamp-2 min-h-[3.5rem] mb-3 group-hover:text-christmas-burgundy transition-smooth">
           {product.name}
         </h3>
-        
-        <div className="mt-2 flex items-center justify-between">
+
+        <div className="flex items-end justify-between">
           <div>
-            <p className="text-lg font-bold text-primary">
+            <p className="text-xl font-bold text-christmas-burgundy">
               {formatPrice(price)}
             </p>
             {hasMultipleVariants && (
-              <p className="text-xs text-muted-foreground">
+              <p className="text-xs text-muted-foreground mt-1">
                 {product.variants.length} phân loại
               </p>
             )}
           </div>
-          
-          {isInStock && defaultVariant && (
-            <span className="text-xs text-muted-foreground">
+
+          {isInStock && defaultVariant && defaultVariant.stock <= 10 && (
+            <span className="text-xs text-christmas-sage font-medium">
               Còn {defaultVariant.stock}
             </span>
           )}

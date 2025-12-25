@@ -25,49 +25,55 @@ const BannerSlider = () => {
   // Auto-play
   useEffect(() => {
     if (banners.length <= 1) return;
-    const timer = setInterval(nextSlide, 5000);
+    const timer = setInterval(nextSlide, 6000); // Slower for elegance
     return () => clearInterval(timer);
   }, [banners.length, nextSlide]);
 
   if (banners.length === 0) {
     return (
-      <div className="relative h-[300px] md:h-[400px] lg:h-[500px] bg-gradient-to-r from-primary/20 to-accent/20 flex items-center justify-center">
-        <div className="text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
+      <div className="relative h-[400px] md:h-[500px] lg:h-[600px] bg-gradient-to-br from-christmas-cream via-warmGray-100 to-christmas-sage/10 flex items-center justify-center">
+        <div className="text-center animate-fade-in">
+          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-christmas-burgundy mb-4">
             🎄 Giáng Sinh An Lành
-          </h2>
-          <p className="text-muted-foreground">Chào mừng đến với Noel Shop</p>
+          </h1>
+          <p className="font-handwritten text-xl md:text-2xl text-christmas-sage">
+            Chào mừng đến với Noel Shop
+          </p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="relative h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden group">
+    <div className="relative h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden group">
       {/* Slides */}
       <div
-        className="flex h-full transition-transform duration-500 ease-out"
+        className="flex h-full transition-transform duration-700 ease-in-out"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {banners.map((banner) => (
           <div key={banner.id} className="relative w-full h-full flex-shrink-0">
-            <img
-              src={banner.image}
-              alt={banner.title}
-              className="w-full h-full object-cover"
-            />
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-foreground/60 to-transparent" />
-            
+            {/* Image with zoom effect */}
+            <div className="image-zoom-container w-full h-full">
+              <img
+                src={banner.image}
+                alt={banner.title}
+                className="image-zoom w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Elegant dark overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-christmas-charcoal/70 via-christmas-charcoal/50 to-transparent" />
+
             {/* Content */}
             <div className="absolute inset-0 flex items-center">
               <div className="container mx-auto px-4">
-                <div className="max-w-lg text-background">
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 animate-fade-in">
+                <div className="max-w-xl">
+                  <h1 className="font-serif text-3xl md:text-4xl lg:text-6xl font-bold mb-4 text-white leading-tight animate-fade-in">
                     {banner.title}
-                  </h2>
+                  </h1>
                   {banner.subtitle && (
-                    <p className="text-lg md:text-xl mb-6 text-background/90">
+                    <p className="text-lg md:text-xl lg:text-2xl mb-8 text-white/90 leading-relaxed">
                       {banner.subtitle}
                     </p>
                   )}
@@ -75,7 +81,7 @@ const BannerSlider = () => {
                     <Link to={banner.link}>
                       <Button
                         size="lg"
-                        className="bg-primary hover:bg-primary/90 text-primary-foreground"
+                        className="bg-christmas-burgundy hover:bg-christmas-burgundy/90 text-white hover-lift px-8 py-6 text-lg font-medium shadow-soft-lg"
                       >
                         Khám phá ngay
                       </Button>
@@ -88,13 +94,13 @@ const BannerSlider = () => {
         ))}
       </div>
 
-      {/* Navigation arrows */}
+      {/* Navigation arrows - Refined */}
       {banners.length > 1 && (
         <>
           <Button
             variant="ghost"
             size="icon"
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/20 hover:bg-background/40 text-background opacity-0 group-hover:opacity-100 transition-opacity"
+            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white border border-white/20 opacity-0 group-hover:opacity-100 transition-all hover-lift w-12 h-12"
             onClick={prevSlide}
           >
             <ChevronLeft className="h-6 w-6" />
@@ -102,7 +108,7 @@ const BannerSlider = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/20 hover:bg-background/40 text-background opacity-0 group-hover:opacity-100 transition-opacity"
+            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white border border-white/20 opacity-0 group-hover:opacity-100 transition-all hover-lift w-12 h-12"
             onClick={nextSlide}
           >
             <ChevronRight className="h-6 w-6" />
@@ -110,18 +116,18 @@ const BannerSlider = () => {
         </>
       )}
 
-      {/* Dots */}
+      {/* Dots - More elegant */}
       {banners.length > 1 && (
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+        <div className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 flex gap-3">
           {banners.map((_, index) => (
             <button
               key={index}
-              className={`w-2.5 h-2.5 rounded-full transition-all ${
-                index === currentIndex
-                  ? "bg-background w-8"
-                  : "bg-background/50 hover:bg-background/70"
-              }`}
+              className={`h-2 rounded-full transition-all ${index === currentIndex
+                  ? "bg-white w-10"
+                  : "bg-white/40 hover:bg-white/60 w-2"
+                }`}
               onClick={() => setCurrentIndex(index)}
+              aria-label={`Go to slide ${index + 1}`}
             />
           ))}
         </div>

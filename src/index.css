@@ -4,53 +4,64 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 10%;
+    /* Base colors - Warm neutrals */
+    --background: 40 25% 98%;
+    --foreground: 20 10% 20%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 10%;
+    --card-foreground: 20 10% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
+    --popover-foreground: 20 10% 20%;
 
-    /* Christmas Red */
-    --primary: 0 72% 45%;
+    /* Primary: Burgundy (refined from bright red) */
+    --primary: 142 45% 35%;
     --primary-foreground: 0 0% 100%;
 
-    /* Soft Gray */
-    --secondary: 120 5% 96%;
-    --secondary-foreground: 0 0% 10%;
+    /* Secondary: Warm gray */
+    --secondary: 40 15% 90%;
+    --secondary-foreground: 20 10% 20%;
 
-    --muted: 120 5% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 40 20% 95%;
+    --muted-foreground: 40 5% 45%;
 
-    /* Christmas Green */
-    --accent: 142 71% 35%;
+    /* Accent: Sage green */
+    --accent: 140 20% 45%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 65% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 0 72% 45%;
+    --border: 40 15% 88%;
+    --input: 40 15% 90%;
+    --ring: 142 45% 35%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    /* Christmas specific colors */
-    --christmas-red: 0 72% 45%;
-    --christmas-green: 142 71% 35%;
-    --christmas-gold: 45 93% 47%;
-    --christmas-snow: 0 0% 98%;
+    /* Christmas refined colors */
+    --christmas-burgundy: 142 45% 35%;
+    --christmas-forest: 140 30% 30%;
+    --christmas-sage: 140 20% 45%;
+    --christmas-champagne: 45 60% 70%;
+    --christmas-cream: 40 30% 95%;
+    --christmas-charcoal: 20 10% 20%;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 0 0% 25%;
-    --sidebar-primary: 0 72% 45%;
+    /* Warm grays */
+    --warm-gray-50: 40 25% 98%;
+    --warm-gray-100: 40 20% 95%;
+    --warm-gray-200: 40 15% 90%;
+    --warm-gray-300: 40 10% 80%;
+    --warm-gray-400: 40 8% 60%;
+    --warm-gray-500: 40 5% 45%;
+
+    --sidebar-background: 40 20% 97%;
+    --sidebar-foreground: 20 10% 25%;
+    --sidebar-primary: 142 45% 35%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 142 71% 35%;
+    --sidebar-accent: 140 20% 45%;
     --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 0 0% 90%;
-    --sidebar-ring: 0 72% 45%;
+    --sidebar-border: 40 15% 88%;
+    --sidebar-ring: 142 45% 35%;
   }
 
   .dark {
@@ -101,4 +112,77 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
   }
+
+  /* Typography */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif font-semibold tracking-tight;
+  }
+
+  h1 {
+    @apply text-4xl sm:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl sm:text-4xl lg:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl sm:text-3xl lg:text-4xl;
+  }
+
+  h4 {
+    @apply text-xl sm:text-2xl;
+  }
 }
+
+@layer utilities {
+
+  /* Shadow utilities */
+  .shadow-soft {
+    box-shadow: 0 1px 3px rgba(20, 20, 20, 0.08);
+  }
+
+  .shadow-soft-md {
+    box-shadow: 0 4px 12px rgba(20, 20, 20, 0.12);
+  }
+
+  .shadow-soft-lg {
+    box-shadow: 0 12px 24px rgba(20, 20, 20, 0.15);
+  }
+
+  /* Hover lift effect */
+  .hover-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(20, 20, 20, 0.15);
+  }
+
+  /* Image zoom on hover */
+  .image-zoom-container {
+    overflow: hidden;
+  }
+
+  .image-zoom {
+    transition: transform 0.4s ease;
+  }
+
+  .image-zoom-container:hover .image-zoom {
+    transform: scale(1.05);
+  }
+
+  /* Smooth transitions */
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap');

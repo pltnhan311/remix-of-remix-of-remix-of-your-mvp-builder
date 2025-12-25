@@ -168,8 +168,8 @@ export const seedProducts: Product[] = [
     description: 'Dây đèn LED trang trí 100 bóng, dài 10m. Có 8 chế độ nhấp nháy, chống nước IP44.',
     price: 125000,
     images: [
-      'https://images.unsplash.com/photo-1513297887119-d46091b24b39?w=600',
-      'https://images.unsplash.com/photo-1512389142860-9c449e58a814?w=600'
+      'https://images.unsplash.com/photo-1543255006-d639f26f1c19?w=600',
+      'https://images.unsplash.com/photo-1576014131341-fe1486bbb247?w=600'
     ],
     categoryId: 'cat-3',
     variants: [
@@ -486,7 +486,7 @@ export const seedBanners: Banner[] = [
     title: 'Đèn LED Rực Rỡ',
     subtitle: 'Bộ sưu tập đèn LED mới nhất',
     image: 'https://images.unsplash.com/photo-1513297887119-d46091b24b39?w=1200',
-    link: '/danh-muc/den-led-day-den',
+    link: '/san-pham?category=cat-3',
     order: 3,
     active: true,
     createdAt: '2024-11-01T00:00:00Z',
